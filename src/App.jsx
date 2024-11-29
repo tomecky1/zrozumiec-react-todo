@@ -1,8 +1,9 @@
 import styles from "./App.module.css";
-import { Form } from "./components/Form/Form.jsx";
-import { TodoItem } from "./components/TodoItem/TodoItem.jsx";
-import { getSubheading } from "./utils/getSubheading.js";
-import { useState } from "react";
+import {Form} from "./components/Form/Form.jsx";
+import {TodoItem} from "./components/TodoItem/TodoItem.jsx";
+import {getSubheading} from "./utils/getSubheading.js";
+import {useState} from "react";
+import Time from "./components/Time/Time.jsx";
 
 function App() {
   const [isFormShown, setIsFormShown] = useState(false);
@@ -38,13 +39,14 @@ function App() {
   function finishItem(id) {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
+        todo.id === id ? {...todo, done: !todo.done} : todo
       )
     );
   }
 
   return (
     <div className={styles.container}>
+      <Time/>
       <header className={styles.header}>
         <div>
           <h1>Lista zadań do zrobienia</h1>
@@ -67,7 +69,7 @@ function App() {
         />
       )}
       <ul>
-        {todos.map(({ id, name, done }) => (
+        {todos.map(({id, name, done}) => (
           <TodoItem
             key={id}
             name={name}
